@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="cesdk">
+      <UniqueIdentifier>{3c83297f-0675-42e9-9551-20df8f9645ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="minhook">
+      <UniqueIdentifier>{e90e33fb-78a6-43e4-87ba-2ae0497634dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="minhook\hde">
+      <UniqueIdentifier>{dfd318ba-e7b6-47de-b7c0-c127128859e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ntex">
+      <UniqueIdentifier>{41b86b6e-f7cd-47b8-93f0-d740fcac5e20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cesdk\cepluginsdk.h">
+      <Filter>cesdk</Filter>
+    </ClInclude>
+    <ClInclude Include="cesdk\lauxlib.h">
+      <Filter>cesdk</Filter>
+    </ClInclude>
+    <ClInclude Include="cesdk\lua.h">
+      <Filter>cesdk</Filter>
+    </ClInclude>
+    <ClInclude Include="cesdk\lua.hpp">
+      <Filter>cesdk</Filter>
+    </ClInclude>
+    <ClInclude Include="cesdk\luaconf.h">
+      <Filter>cesdk</Filter>
+    </ClInclude>
+    <ClInclude Include="cesdk\lualib.h">
+      <Filter>cesdk</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\hde\hde32.h">
+      <Filter>minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\hde\hde64.h">
+      <Filter>minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\hde\pstdint.h">
+      <Filter>minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\hde\table32.h">
+      <Filter>minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\hde\table64.h">
+      <Filter>minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\buffer.h">
+      <Filter>minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\MinHook.h">
+      <Filter>minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="minhook\trampoline.h">
+      <Filter>minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="shellcode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="cesdk\lua53-32.lib">
+      <Filter>cesdk</Filter>
+    </Library>
+    <Library Include="cesdk\lua53-64.lib">
+      <Filter>cesdk</Filter>
+    </Library>
+    <Library Include="ntex\ntex32.lib">
+      <Filter>ntex</Filter>
+    </Library>
+    <Library Include="ntex\ntex64.lib">
+      <Filter>ntex</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="minhook\hde\hde32.c">
+      <Filter>minhook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="minhook\hde\hde64.c">
+      <Filter>minhook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="minhook\buffer.c">
+      <Filter>minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="minhook\hook.c">
+      <Filter>minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="minhook\trampoline.c">
+      <Filter>minhook</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="exports.def">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+</Project>

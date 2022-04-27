@@ -1,0 +1,8 @@
+LIBRARY
+EXPORTS
+
+fm=file_mapping
+ConfigName=config_name
+EventsName=events_name
+InitializeVEH
+UnloadVEH

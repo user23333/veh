@@ -1,0 +1,6 @@
+LIBRARY
+EXPORTS
+
+CEPlugin_GetVersion
+CEPlugin_InitializePlugin
+CEPlugin_DisablePlugin

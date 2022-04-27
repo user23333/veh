@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "veh_debug_plugin", "veh_debug_plugin\veh_debug_plugin.vcxproj", "{48423C28-E944-42E5-BCC8-CC2D432609EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Debug|x64.ActiveCfg = Debug|x64
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Debug|x64.Build.0 = Debug|x64
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Debug|x86.ActiveCfg = Debug|Win32
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Debug|x86.Build.0 = Debug|Win32
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Release|x64.ActiveCfg = Release|x64
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Release|x64.Build.0 = Release|x64
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Release|x86.ActiveCfg = Release|Win32
+		{48423C28-E944-42E5-BCC8-CC2D432609EF}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B6C6222-0480-4418-9679-1CC5D8AAE978}
+	EndGlobalSection
+EndGlobal
