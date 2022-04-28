@@ -1,9 +1,6 @@
 #include "main.h"
 
-EXTERN_C_START
-NTSYSAPI VOID NTAPI KiUserExceptionDispatcher();
-NTSYSAPI VOID NTAPI RtlRestoreContext(PCONTEXT ContextRecord, PEXCEPTION_RECORD ExceptionRecord);
-EXTERN_C_END
+#define USE_VECTORED_EXCEPTION_HANDLER
 
 HANDLE file_mapping;
 char config_name[256];
@@ -16,20 +13,6 @@ PVOID exception_handler_handle = nullptr;
 DWORD handler_lock;
 CriticalSectionLock handler_cs;
 HANDLE emergency;
-
-void* SetWow64PrepareForException(void* ptr)
-{
-	char* excdis = reinterpret_cast<char*>(KiUserExceptionDispatcher);
-	int rel = *reinterpret_cast<int*>(excdis + 0x4);
-	void** predis = reinterpret_cast<void**>(excdis + rel + 0x8);
-
-	DWORD protect = PAGE_READWRITE;
-	VirtualProtect(predis, 8, protect, &protect);
-	void* old_predis = *predis;
-	*predis = ptr;
-	VirtualProtect(predis, 8, protect, &protect);
-	return old_predis;
-}
 
 void TestAndFixCs()
 {
@@ -44,11 +27,15 @@ void UnloadVEH()
 	veh_debug_active = false;
 	if (exception_handler_handle)
 	{
+#ifdef USE_VECTORED_EXCEPTION_HANDLER
+		RemoveVectoredExceptionHandler(exception_handler_handle);
+#else
 		if (exception_handler_handle == reinterpret_cast<PVOID>(-1))
 		{
 			exception_handler_handle = nullptr;
 		}
 		SetWow64PrepareForException(exception_handler_handle);
+#endif
 		exception_handler_handle = nullptr;
 	}
 }
@@ -129,7 +116,7 @@ LONG InternalHandler(LPEXCEPTION_POINTERS ep, DWORD tid)
 	return result;
 }
 
-LONG Handler(LPEXCEPTION_POINTERS ep)
+LONG NTAPI Handler(LPEXCEPTION_POINTERS ep)
 {
 	DWORD tid = GetCurrentThreadId();
 	for (uint64_t i = 0; i < vehmem->NoBreakListSize; i++)
@@ -228,6 +215,10 @@ void InitializeVEH()
 	handler_cs.Enter();
 	veh_debug_active = true;
 
+#ifdef USE_VECTORED_EXCEPTION_HANDLER
+	if (!exception_handler_handle)
+		exception_handler_handle = AddVectoredExceptionHandler(TRUE, Handler);
+#else
 	if (!exception_handler_handle)
 	{
 		exception_handler_handle = SetWow64PrepareForException(Wow64PrepareForExceptionHook);
@@ -236,6 +227,7 @@ void InitializeVEH()
 			exception_handler_handle = reinterpret_cast<PVOID>(-1);
 		}
 	}
+#endif
 
 	EmulateInitializeEvents();
 

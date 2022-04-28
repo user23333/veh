@@ -51,3 +51,22 @@ struct CriticalSectionLock
 		LeaveCriticalSection(&cs);
 	}
 };
+
+EXTERN_C_START
+NTSYSAPI VOID NTAPI KiUserExceptionDispatcher();
+NTSYSAPI VOID NTAPI RtlRestoreContext(PCONTEXT ContextRecord, PEXCEPTION_RECORD ExceptionRecord);
+EXTERN_C_END
+
+inline void* SetWow64PrepareForException(void* ptr)
+{
+	char* excdis = reinterpret_cast<char*>(KiUserExceptionDispatcher);
+	int rel = *reinterpret_cast<int*>(excdis + 0x4);
+	void** predis = reinterpret_cast<void**>(excdis + rel + 0x8);
+
+	DWORD protect = PAGE_READWRITE;
+	VirtualProtect(predis, 8, protect, &protect);
+	void* old_predis = *predis;
+	*predis = ptr;
+	VirtualProtect(predis, 8, protect, &protect);
+	return old_predis;
+}

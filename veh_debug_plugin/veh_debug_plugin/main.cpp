@@ -148,7 +148,7 @@ bool InstallVEH()
 				fm = base + 0x3018;
 				ConfigName = base + 0x3250;
 				EventsName = base + 0x3020;
-				InitializeVEH = base + 0x14D0;
+				InitializeVEH = base + 0x1410;
 				UnloadVEH = base + 0x1000;
 				RegisterSymbol("vehdebug-x86_64.dll", base);
 				RegisterSymbol("vehdebug-x86_64.InitializeVEH", InitializeVEH);
